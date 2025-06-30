@@ -1,0 +1,92 @@
+
+@use 'sass:map';
+@use 'variaveis' as *;
+@use 'mixins' as *;
+
+.logo {
+  &__title {
+    @include titulo(medio);
+  }
+  
+  &__image {
+    max-height: map.get($dimensoes, logo-altura);
+    height: auto;
+    width: auto;
+  }
+}
+
+.services-grid {
+  @include grid-responsivo();
+  margin-top: map.get($espacamentos, xl);
+  
+  @include responder(mobile) {
+    grid-template-columns: 1fr;
+    gap: map.get($espacamentos, lg);
+  }
+}
+
+.service-card {
+  @include card-base;
+  
+  &__title {
+    @include titulo(medio);
+  }
+  
+  &__description {
+    @include texto-base;
+  }
+}
+
+.testimonial {
+  background-color: map.get($cores, depoimento-fundo);
+  padding: map.get($espacamentos, testimonial-padding);
+  border-left: 4px solid map.get($cores, primaria);
+  border-radius: map.get($efeitos, borda-radius);
+  margin-bottom: map.get($espacamentos, md);
+  
+  &__text {
+    @include texto-base;
+    margin-bottom: map.get($espacamentos, sm);
+    font-style: italic;
+  }
+  
+  &__author {
+    font-weight: map.get($fontes, pesos, negrito);
+    color: map.get($cores, primaria);
+  }
+}
+
+.contact {
+  &__address {
+    margin-bottom: map.get($espacamentos, xl);
+  }
+  
+  &__info {
+    margin-bottom: map.get($espacamentos, sm);
+  }
+}
+
+.form {
+  @include flex-column;
+  gap: map.get($espacamentos, md);
+  margin-top: map.get($espacamentos, md);
+  
+  &__label {
+    font-weight: map.get($fontes, pesos, negrito);
+    margin-bottom: map.get($espacamentos, xs);
+  }
+  
+  &__input,
+  &__textarea {
+    @include campo-input;
+  }
+  
+  &__button {
+    @include botao-primario;
+    width: map.get($dimensoes, botao-largura);
+    
+    @include responder(mobile) {
+      width: 100%;
+    }
+  }
+}

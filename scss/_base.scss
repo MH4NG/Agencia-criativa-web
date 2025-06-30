@@ -1,0 +1,63 @@
+@use 'sass:map';
+@use 'variaveis' as *;
+@use 'mixins' as *;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.page {
+  font-family: map.get($fontes, familia);
+  font-size: map.get($fontes, tamanhos, pequeno);
+  line-height: map.get($fontes, altura-linha);
+  @include gradiente(principal);
+  
+  &__title {
+    @include titulo();
+  }
+  
+  &__subtitle {
+    @include titulo(medio);
+  }
+  
+  &__text {
+    @include texto-base;
+  }
+}
+
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-margin-bottom {
+  &-small {
+    margin-bottom: map.get($espacamentos, md);
+  }
+  
+  &-medium {
+    margin-bottom: map.get($espacamentos, xl);
+  }
+  
+  &-large {
+    margin-bottom: map.get($espacamentos, xxl);
+  }
+}
+
+.u-padding-vertical {
+  &-small {
+    padding: map.get($espacamentos, md) 0;
+  }
+  
+  &-medium {
+    padding: map.get($espacamentos, xl) 0;
+  }
+  
+  &-large {
+    padding: map.get($espacamentos, xxxl) 0;
+  }
+}

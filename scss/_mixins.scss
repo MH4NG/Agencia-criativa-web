@@ -1,0 +1,132 @@
+@use 'sass:map';
+@use 'variaveis' as *;
+
+@mixin responder($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: map.get($breakpoints, mobile)) {
+      @content;
+    }
+  }
+  @if $breakpoint == tablet {
+    @media (max-width: map.get($breakpoints, tablet)) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media (min-width: map.get($breakpoints, desktop)) {
+      @content;
+    }
+  }
+}
+
+@mixin transicao($propriedade: all, $duracao: map.get($efeitos, transicao-padrao)) {
+  transition: $propriedade $duracao;
+}
+
+@mixin gradiente($tipo: principal) {
+  background: map.get($gradientes, $tipo);
+}
+
+@mixin sombra($tipo: leve) {
+  @if $tipo == leve {
+    box-shadow: map.get($efeitos, sombra-leve);
+  }
+}
+
+@mixin botao-base {
+  border: none;
+  border-radius: map.get($efeitos, borda-radius-pequeno);
+  cursor: pointer;
+  font-size: map.get($fontes, tamanhos, pequeno);
+  font-weight: map.get($fontes, pesos, negrito);
+  padding: map.get($espacamentos, input-padding);
+  @include transicao();
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin botao-primario {
+  @include botao-base;
+  background-color: map.get($cores, primaria);
+  color: map.get($cores, branco);
+  
+  &:hover {
+    background-color: map.get($cores, secundaria);
+    transform: translateY(-2px);
+  }
+}
+
+@mixin campo-input {
+  border: 1px solid map.get($cores, borda-input);
+  border-radius: map.get($efeitos, borda-radius-pequeno);
+  font-size: map.get($fontes, tamanhos, pequeno);
+  padding: map.get($espacamentos, input-padding);
+  @include transicao();
+  
+  &:focus {
+    outline: none;
+    border-color: map.get($cores, primaria);
+    box-shadow: 0 0 0 2px rgba(13, 71, 161, 0.2);
+  }
+}
+
+@mixin card-base {
+  background: map.get($cores, branco);
+  border-radius: map.get($efeitos, borda-radius);
+  padding: map.get($espacamentos, card-padding);
+  text-align: center;
+  @include sombra();
+  @include transicao(transform, map.get($efeitos, transicao-transform));
+  
+  &:hover {
+    @include gradiente(hover);
+    color: map.get($cores, branco);
+    transform: translateY(-5px);
+  }
+}
+
+@mixin nav-link-base {
+  color: map.get($cores, branco);
+  text-decoration: none;
+  font-weight: map.get($fontes, pesos, negrito);
+  @include transicao();
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin grid-responsivo($min-width: map.get($dimensoes, card-min-width)) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: map.get($espacamentos, xl);
+}
+
+@mixin titulo($tamanho: grande) {
+  font-size: map.get($fontes, tamanhos, $tamanho);
+  margin-bottom: map.get($espacamentos, xl);
+}
+
+@mixin texto-base {
+  font-size: map.get($fontes, tamanhos, pequeno);
+  margin-bottom: map.get($espacamentos, md);
+}

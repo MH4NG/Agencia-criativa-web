@@ -1,0 +1,77 @@
+@use 'sass:map';
+
+$cores: (
+  primaria: #0d47a1,
+  secundaria: #1565c0,
+  fundo: #f9f9f9,
+  texto: #333,
+  branco: #fff,
+  depoimento-fundo: rgb(251, 253, 216),
+  borda-input: #ccc
+);
+
+$gradientes: (
+  principal: linear-gradient(90deg, rgba(255, 255, 255, 1) 10%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%),
+  hover: linear-gradient(to right, rgba(87, 199, 133, 1) 10%, rgba(237, 221, 83, 1) 100%),
+  mobile: linear-gradient(90deg, rgba(255, 255, 255, 1) 20%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%),
+  banner: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))
+);
+
+$fontes: (
+  familia: ('Segoe UI', Tahoma, Geneva, Verdana, sans-serif),
+  tamanhos: (
+    pequeno: 1rem,
+    medio: 1.5rem,
+    grande: 2rem
+  ),
+  pesos: (
+    normal: 400,
+    negrito: bold
+  ),
+  altura-linha: 1.6
+);
+
+$espacamentos: (
+  xs: 0.25rem,
+  sm: 0.5rem,
+  md: 1rem,
+  lg: 1.5rem,
+  xl: 2rem,
+  xxl: 3rem,
+  xxxl: 4rem,
+  header-padding: 0.3rem 0.7rem,
+  banner-padding: 15vh 2rem,
+  section-padding: 4rem 2rem,
+  section-padding-mobile: 2rem 1rem,
+  card-padding: 2rem,
+  testimonial-padding: 1.5rem,
+  input-padding: 0.75rem
+);
+
+$efeitos: (
+  sombra-leve: 0 4px 6px rgba(0, 0, 0, 0.1),
+  borda-radius: 8px,
+  borda-radius-pequeno: 0.25rem,
+  transicao-padrao: 0.3s ease,
+  transicao-transform: 0.5s ease
+);
+
+$dimensoes: (
+  logo-altura: 60px,
+  container-max: 1200px,
+  botao-largura: 150px,
+  card-min-width: 250px,
+  textarea-rows: 5
+);
+
+$breakpoints: (
+  mobile: 768px,
+  tablet: 1024px,
+  desktop: 1200px
+);
+
+$z-index: (
+  header: 100,
+  overlay: 200,
+  modal: 300
+);

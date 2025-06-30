@@ -1,0 +1,34 @@
+{
+  "name": "sass-compiler-project",
+  "version": "1.0.0",
+  "description": "Projeto para compilar arquivos SASS",
+  "main": "compile.js",
+  "scripts": {
+    "build": "sass scss/estilos.scss css/estilos.css",
+    "build-compressed": "sass scss/estilos.scss css/estilos.min.css --style compressed",
+    "build-both": "npm run build && npm run build-compressed",
+    "watch": "sass --watch scss:css",
+    "watch-compressed": "sass --watch scss:css --style compressed",
+    "clean": "rimraf css/*",
+    "dev": "npm run clean && npm run watch",
+    "prod": "npm run clean && npm run build-compressed",
+    "compile": "node compile.js",
+    "compile-watch": "node compile.js --watch",
+    "compile-compressed": "node compile.js --compressed",
+    "compile-all": "node compile.js --compressed --watch",
+    "clean-custom": "node compile.js --clean"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.10",
+    "sass": "^1.89.2"
+  },
+  "keywords": [
+    "sass",
+    "scss",
+    "css",
+    "frontend",
+    "compilation"
+  ],
+  "author": "",
+  "license": "MIT"
+}

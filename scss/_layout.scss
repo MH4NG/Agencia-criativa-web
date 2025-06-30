@@ -1,0 +1,121 @@
+@use 'sass:map';
+@use 'variaveis' as *;
+@use 'mixins' as *;
+
+
+.header {
+  @include gradiente(principal);
+  @include flex-between;
+  flex-wrap: wrap;
+  padding: map.get($espacamentos, header-padding);
+  
+  &--mobile {
+    @include gradiente(mobile);
+    @include flex-column;
+    align-items: flex-start;
+  }
+  
+  @include responder(mobile) {
+    @include gradiente(mobile);
+    @include flex-column;
+    align-items: flex-start;
+  }
+}
+
+.nav {
+  &__list {
+    @include flex-center;
+    list-style: none;
+    gap: map.get($espacamentos, lg);
+    flex-wrap: wrap;
+    
+    &--mobile {
+      @include flex-column;
+      width: 100%;
+      align-items: center;
+      gap: map.get($espacamentos, sm);
+    }
+    
+    @include responder(mobile) {
+      @include flex-column;
+      width: 100%;
+      align-items: center;
+      gap: map.get($espacamentos, sm);
+    }
+  }
+  
+  &__item {
+    &--mobile {
+      width: 100%;
+    }
+    
+    @include responder(mobile) {
+      width: 100%;
+    }
+  }
+  
+  &__link {
+    @include nav-link-base;
+    
+    &--mobile {
+      color: black;
+    }
+    
+    @include responder(mobile) {
+      color: black;
+    }
+  }
+}
+
+.banner {
+  background: map.get($gradientes, banner),
+              url('../images/banner.jpg') center/cover no-repeat;
+  color: map.get($cores, branco);
+  text-align: center;
+  padding: map.get($espacamentos, banner-padding);
+  
+  &__title {
+    @include titulo();
+    
+    &--mobile {
+      @include titulo(medio);
+    }
+    
+    @include responder(mobile) {
+      @include titulo(medio);
+    }
+  }
+  
+  &__subtitle {
+    @include texto-base;
+  }
+}
+
+.section {
+  padding: map.get($espacamentos, section-padding);
+  max-width: map.get($dimensoes, container-max);
+  margin: 0 auto;
+  
+  &__title {
+    @include titulo();
+  }
+  
+  &__text {
+    @include texto-base;
+  }
+  
+  @include responder(mobile) {
+    padding: map.get($espacamentos, section-padding-mobile);
+  }
+}
+
+.footer {
+  @include gradiente(principal);
+  text-align: center;
+  padding: map.get($espacamentos, md);
+  color: map.get($cores, texto);
+  
+  &__text {
+    @include texto-base;
+  }
+}
